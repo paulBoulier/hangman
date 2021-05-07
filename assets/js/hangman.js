@@ -27,7 +27,7 @@ function createWordToGuess() {
     wordSpliterArray.forEach(toGuessLetter => {
         // création de la lettre dans l'html
         const guessCase = document.createElement("div")
-        guessCase.style.cssText = "flex:1px;margin:2px;display:flex;justify-content:center;align-items:center"
+        guessCase.className = "guessCase"
         // on injecte le span dans une div avec la lettre à deviner, elle est cachée par défaut avec la classe guessCase-letter
         // on injecte la data de la même valeur que la lettre
         guessCase.innerHTML = `<span class=\"guessCase-letter\" data-letter=\"${toGuessLetter}\">${toGuessLetter}</span>`
@@ -61,7 +61,7 @@ function createAbcBtns() {
             // si checkArray est vide c'est que l'on a trouvé aucune occurence, on perd une vie
             if (checkArray.length == 0) {
                 loseALife()
-            }
+            } else this.classList.add("letter-found")
         }
         // on ajoute le bouton à la div #buttonAlphaZone
         buttonAlphaZone.append(btn)

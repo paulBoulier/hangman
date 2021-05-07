@@ -4,114 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <script src="./assets/js/hangman.js" defer></script>
-    <style>
-        * {
-            font-family: 'Roboto Mono', sans-serif;
-        }
-
-        body {
-            margin: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: stretch;
-            flex-direction: column;
-        }
-
-        #guessZone {
-            display: flex;
-            flex-wrap: wrap;
-            height: 100px;
-            justify-content: stretch;
-            color: blue;
-            font-size: 1.8rem;
-        }
-
-        #buttonAlphaZone {
-            text-align: center;
-            margin-top: auto;
-            margin-bottom: 2rem;
-        }
-
-        #buttonAlphaZone>input {
-            width: 2rem;
-            height: 2rem;
-            margin: .25rem;
-        }
-
-        .guessCase-letter {
-            opacity: 0;
-        }
-
-        .guessCase-letter.letter-active {
-            opacity: 1;
-        }
-
-        .guessCase-letter.letter-not-found {
-            opacity: 1;
-            color: grey
-        }
-
-        #imgZone {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        #img {
-            flex: 0;
-        }
-
-        #restartBtn {
-            width: 10rem;
-            display: none;
-            margin: .25rem auto;
-        }
-
-        #restartBtn.restart-show {
-            display: inline;
-        }
-
-        #buttonAlphaZone>input {
-            border-radius: 10%;
-        }
-
-        @media screen and (min-width: 768px) {
-            body>* {
-                margin: 0 30%;
-            }
-
-            .modal-container {
-                margin: 0;
-            }
-
-            #buttonAlphaZone>input:hover {
-                color: white;
-                background-color: black;
-                transition: .3s linear;
-            }
-
-        }
-
-        .modal-container div {
-            border-radius: .25rem;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-    <div id="guessZone"></div>
-    <div id="imgZone">
-        <!-- 640 x 480 -->
-        <img id="img" width="auto" height="300" src="" alt="">
+
+    <div id="container">
+        <div id="guessZone"></div>
+        <div id="imgZone">
+            <!-- 640 x 480 -->
+            <img draggable="false" id="img" width="auto" height="300" src="" alt="">
+        </div>
+        <button id="restartBtn" type="button" data-restart>recommencer</button>
+        <div id="buttonAlphaZone"></div>
     </div>
-    <button id="restartBtn" type="button" data-restart>recommencer</button>
-    <div id="buttonAlphaZone"></div>
+
 </body>
 
 </html>

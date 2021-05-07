@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <script src="./assets/js/hangman.js" defer></script>
     <style>
         * {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto Mono', sans-serif;
         }
 
         body {
@@ -35,6 +35,7 @@
         #buttonAlphaZone {
             text-align: center;
             margin-top: auto;
+            margin-bottom: 2rem;
         }
 
         #buttonAlphaZone>input {
@@ -76,6 +77,10 @@
             display: inline;
         }
 
+        #buttonAlphaZone>input {
+            border-radius: 10%;
+        }
+
         @media screen and (min-width: 768px) {
             body>* {
                 margin: 0 30%;
@@ -83,6 +88,12 @@
 
             .modal-container {
                 margin: 0;
+            }
+
+            #buttonAlphaZone>input:hover {
+                color: white;
+                background-color: black;
+                transition: .3s linear;
             }
 
         }

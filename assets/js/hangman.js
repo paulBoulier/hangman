@@ -170,9 +170,15 @@ function startGame() {
     })
 }
 
+// grise les lettres qui n'ont pas été trouvées
 function revealLetters() {
     console.log(document.querySelectorAll("[data-letter]"))
     document.querySelectorAll("[data-letter]:not([class*=\"letter-active\"])").forEach(letterNotFound => letterNotFound.classList.add("letter-not-found"))
+}
+
+// enlever le style des lettres trouvées sur le clavier
+function removeLettersFound() {
+    document.querySelectorAll(".letter-found").forEach(letter => letter.classList.remove("letter-found"))
 }
 
 // fonction lancée au clic du bouton recommencer
@@ -183,6 +189,7 @@ function restart() {
     setImage()
     createWordToGuess()
     hideRstBtn()
+    removeLettersFound()
 }
 
 // on lance le jeu

@@ -1,4 +1,4 @@
-const myWords = ["pomme", "poire", "abricot", "anticonstitutionnellement", "dessert", "cotillon", "fragment", "globale", "obstruer", "charpentier", "pointe", "esprit", "joue", "remorqueur", "parfumerie", "poche", "carrefour", "gonfler", "camping"].map(word => word.toUpperCase())
+const myWords = ['push', 'origin', 'master', 'commit', 'ecmaSCRIPT', 'javascript', 'trello', 'cascading', 'style', 'sheet', 'hypertext', 'markup', 'language', 'bootstrap', 'GitHub', 'mozilla', 'google', 'apple', 'Microsoft', 'brave', 'visual', 'studio', 'code', 'index', 'table', 'getelementbyid', 'function', 'dataset', 'queryselectorall', 'addeventlistener', 'framework', 'structure', 'object', 'comma', 'loop', 'json', 'regex', 'boolean', 'this', 'console'].map(word => word.toUpperCase())
 
 const imgPathList = ["./assets/img/img-1.png", "./assets/img/img-2.png", "./assets/img/img-3.png", "./assets/img/img-4.png", "./assets/img/img-5.png", "./assets/img/img-6.png", "./assets/img/img-7.png"]
 
@@ -46,7 +46,6 @@ function createAbcBtns() {
         btn.type = "button"
         btn.value = alphaLetter
         btn.onclick = function () {
-            console.log("reaction")
             // au clique on désactive toujours le bouton
             this.disabled = true
             // sélection de tous les lettres du mots dans le DOM, il retourne le nombre de span trouvés
@@ -66,7 +65,6 @@ function createAbcBtns() {
         }
         // on ajoute le bouton à la div #buttonAlphaZone
         buttonAlphaZone.append(btn)
-        if (id != 0 && id % 9 == 0) buttonAlphaZone.append(document.createElement("br"))
     })
 }
 
@@ -90,15 +88,13 @@ function showRstBtn() {
 
 // genère un entier aléatoire pour sélectionner un mot dans la liste myWords
 function getRandomInt() {
-    return Math.round(Math.random() * myWords.length - 1);
+    return Math.round(Math.random() * (myWords.length - 1));
 }
 
 // découpe le mot par lettre et le retourne
 function wordSpliter() {
     const randomWord = myWords[getRandomInt()]
-    console.log(randomWordLength)
     randomWordLength = randomWord.length
-    console.log(randomWordLength)
     return randomWord.split("")
 }
 
@@ -136,6 +132,7 @@ function onWin() {
 
 // quand c'est perdu alerter perdu
 function onDie() {
+    revealLetters()
     alertModal("T'es un looser !!!")
     disableButtons()
     showRstBtn()
@@ -171,6 +168,11 @@ function startGame() {
     document.querySelector("button[data-restart]").addEventListener("click", function () {
         restart()
     })
+}
+
+function revealLetters() {
+    console.log(document.querySelectorAll("[data-letter]"))
+    document.querySelectorAll("[data-letter]:not([class*=\"letter-active\"])").forEach(letterNotFound => letterNotFound.classList.add("letter-not-found"))
 }
 
 // fonction lancée au clic du bouton recommencer

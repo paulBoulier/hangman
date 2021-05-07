@@ -29,7 +29,7 @@
             height: 100px;
             justify-content: stretch;
             color: blue;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         #buttonAlphaZone {
@@ -40,6 +40,7 @@
         #buttonAlphaZone>input {
             width: 2rem;
             height: 2rem;
+            margin: .25rem;
         }
 
         .guessCase-letter {
@@ -48,6 +49,11 @@
 
         .guessCase-letter.letter-active {
             opacity: 1;
+        }
+
+        .guessCase-letter.letter-not-found {
+            opacity: 1;
+            color: grey
         }
 
         #imgZone {
@@ -61,7 +67,9 @@
         }
 
         #restartBtn {
+            width: 10rem;
             display: none;
+            margin: .25rem auto;
         }
 
         #restartBtn.restart-show {
@@ -76,6 +84,11 @@
             .modal-container {
                 margin: 0;
             }
+
+        }
+
+        .modal-container div {
+            border-radius: .25rem;
         }
     </style>
 </head>

@@ -43,12 +43,22 @@
             text-align: center;
         }
 
+        #img {
+            flex: 0;
+        }
+
         #restartBtn {
             display: none;
         }
 
         #restartBtn.restart-show {
             display: inline;
+        }
+
+        @media screen and (min-width: 768px) {
+            body>* {
+                margin: 0 30%;
+            }
         }
     </style>
 </head>

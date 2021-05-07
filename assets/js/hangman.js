@@ -4,7 +4,9 @@ const imgPathList = ["./assets/img/img-1.png", "./assets/img/img-2.png", "./asse
 
 let guessCount = 7 - 1
 let life = 0
+// variable de référence pour le compteur de lettres à trouver
 let randomWordLength = 0
+// variable à incrémenter à chaque lettre trouvée
 let currentWordGuessed = 0
 
 function initLife() {
@@ -38,7 +40,7 @@ function createWordToGuess() {
 
 function createAbcBtns() {
     // creation des boutons, ajout au DOM et gestion et réaction au click
-    "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("").forEach(alphaLetter => {
+    "azertyuiopqsdfghjklmwxcvbn".toUpperCase().split("").forEach(alphaLetter => {
         const btn = document.createElement("input")
         btn.type = "button"
         btn.value = alphaLetter
@@ -102,16 +104,33 @@ function removeGuessWordZone() {
     Array.from(guessZone.children).forEach(child => guessZone.removeChild(child))
 }
 
+function alertModal(content) {
+    // on crée le conteneur de la modale
+    const modalContainer = document.createElement("div")
+    modalContainer.style.cssText = "width:100%; height:100%;background-color:rgba(0,0,0,.5);position:fixed;top:0;left:0;display:flex;justify-content:center;align-items:center"
+    // au clic supprimer la modale
+    modalContainer.onclick = function () {
+        document.body.removeChild(modalContainer)
+    }
+    // on crée le contenu
+    const modalWrapper = document.createElement("div")
+    modalWrapper.style.cssText = "width:200px;height:200px;background-color:#fff;display:flex;align-items:center;justify-content:center;"
+    modalWrapper.innerHTML = content
+
+    modalContainer.appendChild(modalWrapper)
+    document.body.appendChild(modalContainer)
+}
+
 // lors de la victoire affiche un message et montre le bouton recommencer
 function onWin() {
-    alert("gagné !")
+    alertModal("gagné !")
     showRstBtn()
     currentWordGuessed = 0
 }
 
 // quand c'est perdu alerter perdu
 function onDie() {
-    alert("perdu")
+    alertModal("T'es un looser !!!")
     disableButtons()
     showRstBtn()
 }
@@ -126,27 +145,36 @@ function disableButtons() {
     document.querySelectorAll("#buttonAlphaZone>input").forEach(alphaButton => alphaButton.disabled = true)
 }
 
+// cette function est appelée à chaque fois qu'une lettre est trouvée
 function letterFound() {
+    // on incrémente le compteur de lettre trouvée (l10)
     currentWordGuessed++
-    console.log(currentWordGuessed, randomWordLength)
+    // si le compteur de lettre trouvée est égale à la longeur du mot c'est gagné
     if (currentWordGuessed == randomWordLength) onWin()
 }
 
-initLife()
-createWordToGuess()
-createAbcBtns()
-setImage()
+// lancement du jeu
+function startGame() {
+    initLife()
+    createWordToGuess()
+    createAbcBtns()
+    setImage()
 
-// quand on clique sur le bouton recommencer
-document.querySelector("button[data-restart]").addEventListener("click", function () {
+    // quand on clique sur le bouton recommencer
+    document.querySelector("button[data-restart]").addEventListener("click", function () {
+        restart()
+    })
+}
+
+// fonction lancée au clic du bouton recommencer
+function restart() {
     initLife()
     toActiveButtons()
     removeGuessWordZone()
     setImage()
     createWordToGuess()
     hideRstBtn()
-})
+}
 
-
-
-// button.click => toGuess.indexof(this.dataset.value)
+// on lance le jeu
+startGame()

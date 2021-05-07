@@ -39,12 +39,14 @@ function createWordToGuess() {
 }
 
 function createAbcBtns() {
+    const wrapper = document.createElement("div")
     // creation des boutons, ajout au DOM et gestion et réaction au click
-    "azertyuiopqsdfghjklmwxcvbn".toUpperCase().split("").forEach(alphaLetter => {
+    "azertyuiopqsdfghjklmwxcvbn".toUpperCase().split("").forEach((alphaLetter, id) => {
         const btn = document.createElement("input")
         btn.type = "button"
         btn.value = alphaLetter
         btn.onclick = function () {
+            console.log("reaction")
             // au clique on désactive toujours le bouton
             this.disabled = true
             // sélection de tous les lettres du mots dans le DOM, il retourne le nombre de span trouvés
@@ -64,6 +66,7 @@ function createAbcBtns() {
         }
         // on ajoute le bouton à la div #buttonAlphaZone
         buttonAlphaZone.append(btn)
+        if (id != 0 && id % 9 == 0) buttonAlphaZone.append(document.createElement("br"))
     })
 }
 
@@ -93,7 +96,9 @@ function getRandomInt() {
 // découpe le mot par lettre et le retourne
 function wordSpliter() {
     const randomWord = myWords[getRandomInt()]
+    console.log(randomWordLength)
     randomWordLength = randomWord.length
+    console.log(randomWordLength)
     return randomWord.split("")
 }
 
@@ -107,6 +112,7 @@ function removeGuessWordZone() {
 function alertModal(content) {
     // on crée le conteneur de la modale
     const modalContainer = document.createElement("div")
+    modalContainer.className = "modal-container"
     modalContainer.style.cssText = "width:100%; height:100%;background-color:rgba(0,0,0,.5);position:fixed;top:0;left:0;display:flex;justify-content:center;align-items:center"
     // au clic supprimer la modale
     modalContainer.onclick = function () {
@@ -114,7 +120,7 @@ function alertModal(content) {
     }
     // on crée le contenu
     const modalWrapper = document.createElement("div")
-    modalWrapper.style.cssText = "width:200px;height:200px;background-color:#fff;display:flex;align-items:center;justify-content:center;"
+    modalWrapper.style.cssText = "width:15rem;height:15rem;background-color:#fff;display:flex;align-items:center;justify-content:center;"
     modalWrapper.innerHTML = content
 
     modalContainer.appendChild(modalWrapper)
@@ -133,6 +139,7 @@ function onDie() {
     alertModal("T'es un looser !!!")
     disableButtons()
     showRstBtn()
+    currentWordGuessed = 0
 }
 
 // on active toutes les lettres de saisies

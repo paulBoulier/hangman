@@ -6,8 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="./assets/js/hangman.js" defer></script>
     <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
         body {
             margin: 0;
             width: 100vw;
@@ -23,10 +29,17 @@
             height: 100px;
             justify-content: stretch;
             color: blue;
+            font-size: 2rem;
         }
 
         #buttonAlphaZone {
+            text-align: center;
             margin-top: auto;
+        }
+
+        #buttonAlphaZone>input {
+            width: 2rem;
+            height: 2rem;
         }
 
         .guessCase-letter {
@@ -58,6 +71,10 @@
         @media screen and (min-width: 768px) {
             body>* {
                 margin: 0 30%;
+            }
+
+            .modal-container {
+                margin: 0;
             }
         }
     </style>

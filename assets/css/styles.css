@@ -131,7 +131,7 @@ body {
 }
 
 #buttonAlphaZone>input.letter-found {
-    color: olivedrab;
+    color: olivedrab !important;
 }
 
 #buttonAlphaZone {

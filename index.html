@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="hangman.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: stretch;
+            flex-direction: column;
+        }
+
+        #guessZone {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100px;
+            justify-content: stretch;
+            color: blue;
+        }
+
+        #buttonAlphaZone {
+            margin-top: auto;
+        }
+
+        .guessCase-letter {
+            opacity: 0;
+        }
+
+        .guessCase-letter.letter-active {
+            opacity: 1;
+        }
+
+        #imgZone {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #restartBtn {
+            display: none;
+        }
+
+        #restartBtn.restart-show {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="guessZone"></div>
+    <div id="imgZone">
+        <img width="auto" height="300" src="" alt="">
+    </div>
+    <button id="restartBtn" type="button" data-restart>recommencer</button>
+    <div id="buttonAlphaZone"></div>
+</body>
+
+</html>

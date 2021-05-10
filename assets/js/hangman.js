@@ -126,6 +126,7 @@ function alertModal(content) {
 // lors de la victoire affiche un message et montre le bouton recommencer
 function onWin() {
     alertModal("gagné !")
+    disableButtons()
     showRstBtn()
     currentWordGuessed = 0
 }
